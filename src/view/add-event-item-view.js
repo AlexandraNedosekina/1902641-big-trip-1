@@ -7,9 +7,7 @@ export const createAddEventItemTemplate = (tripEvent) => {
   const eventType = 'check-in';
   const templateDatetime = dayjs().add(14, 'day').hour(10).minute(0).format('DD/MM/YY HH:mm');
   const createOfferElement = (offer) => {
-    const offerName = offer.name;
-    const offerPrice = offer.price;
-    const offerType = offer.type;
+    const { name, price, type } = offer;
     return `<div class="event__available-offers">
                       <div class="event__offer-selector">
                         <input class="event__offer-checkbox  visually-hidden" id="event-offer-${offerType}-1" type="checkbox" name="event-offer-${offerType}" >
