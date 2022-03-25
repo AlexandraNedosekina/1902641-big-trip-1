@@ -18,11 +18,11 @@ const tripEventsElement = document.querySelector('.trip-events');
 const tripEventsListElement = new EventsListView();
 
 render(tripEventsElement, tripEventsListElement.element, RenderPosition.BEFOREEND );
-render(tripControlsNavigationElement, new TripTabsView(), RenderPosition.BEFOREEND);
-render(tripControlsFiltersElement, new TripFiltersView(), RenderPosition.BEFOREEND);
-render(tripEventsElement, new TripSortView(), RenderPosition.AFTERBEGIN);
-render(tripEventsListElement.element, new AddEventItemView(tripEvents[1]), RenderPosition.BEFOREEND);
-render(tripEventsListElement, new AddEventItemView(tripEvents[0]), RenderPosition.BEFOREEND);
+render(tripControlsNavigationElement, new TripTabsView().element, RenderPosition.BEFOREEND);
+render(tripControlsFiltersElement, new TripFiltersView().element, RenderPosition.BEFOREEND);
+render(tripEventsElement, new TripSortView().element, RenderPosition.AFTERBEGIN);
+render(tripEventsListElement.element, new AddEventItemView(tripEvents[1]).element, RenderPosition.BEFOREEND);
+//render(tripEventsListElement, new AddEventItemView(tripEvents[0]).element, RenderPosition.BEFOREEND);
 
 const renderEvent = (eventListElement, event) => {
   const eventItemComponent = new TripEventItemView(event);
@@ -35,7 +35,7 @@ const renderEvent = (eventListElement, event) => {
     eventListElement.replaceChild(eventEditComponent.element, eventItemComponent.element);
   };
   const onEscKeyDown = (evt) => {
-    if(evt.key === 'Escape' || evt.key === 'Esc') {
+    if(evt.key === 'Escape') {
       evt.preventDefault();
       replaceFormToItem();
       document.removeEventListener('keydown', onEscKeyDown);

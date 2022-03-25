@@ -3,6 +3,7 @@ import {locations} from '../mock/locations';
 import {eventTypes} from '../mock/event-types';
 import {createElement} from '../render';
 
+
 const createEventItemEditTemplate = (tripEvent) => {
   const {eventType, price, location, startDate, endDate, offers, description} = tripEvent;
   const startDatetime = dayjs(startDate).format('D/MM/YY HH:mm ');
@@ -10,10 +11,7 @@ const createEventItemEditTemplate = (tripEvent) => {
 
   const createOfferMarkup = (offer) => {
     const isChecked = offer.isChosen ? ' checked=""' : '';
-    const offerName = offer.name;
-    const offerPrice = offer.price;
-    const offerType = offer.type;
-
+    const {offerName, offerPrice, offerType} = offer;
     return `<div class="event__available-offers">
                       <div class="event__offer-selector">
                         <input class="event__offer-checkbox  visually-hidden" id="event-offer-${offerType}-1" type="checkbox" name="event-offer-${offerType}"${isChecked}>
